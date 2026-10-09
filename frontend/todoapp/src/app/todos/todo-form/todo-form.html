@@ -1,0 +1,12 @@
+<form class="todo-form" [formGroup]="form" (ngSubmit)="submit()">
+  <label for="new-todo-title" class="visually-hidden">New TODO item</label>
+  <input
+    id="new-todo-title"
+    type="text"
+    formControlName="title"
+    placeholder="What needs doing?"
+    autocomplete="off"
+    [attr.maxlength]="maxLength"
+  />
+  <button type="submit" [disabled]="disabled() || form.invalid">Add</button>
+</form>

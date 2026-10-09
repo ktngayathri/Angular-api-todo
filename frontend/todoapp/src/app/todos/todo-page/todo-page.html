@@ -1,0 +1,18 @@
+<main class="card">
+  <header>
+    <h1>My TODO list</h1>
+    <span class="count" aria-live="polite">{{ store.count() }} item(s)</span>
+  </header>
+
+  <app-todo-form [disabled]="store.saving()" (add)="onAdd($event)" />
+
+  @if (store.error(); as error) {
+    <p class="error" role="alert">{{ error }}</p>
+  }
+
+  @if (store.loading()) {
+    <p class="status" aria-live="polite">Loading…</p>
+  } @else {
+    <app-todo-list [todos]="store.todos()" (remove)="onRemove($event)" />
+  }
+</main>
